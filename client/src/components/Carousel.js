@@ -14,7 +14,9 @@ export default function Carousel() {
       <p>imgUrls: {data[0].imgUrls}</p>
       {data[0].imgUrls.map((image) => {
         console.log(image);
+        return(
         <img src={image}></img>
+        )
       })}
     </div>
   );
