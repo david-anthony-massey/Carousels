@@ -12,15 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
 
-// app.get('/getTasks', (req, res) => {
-//   db.getTasks((err, results) => { 
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       res.send(results)
-//     }
-//   })
-// })
+app.get('/getItem', (req, res) => {
+  db.getOneItem((err, results) => { 
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(results)
+    }
+  })
+})
 
 // app.post('/tasks', (req, res) => { // .. // ...  req.body = ['shopping', 'gardening', 'laundry']
 //   // console.log("This is the req on server side: ", req.body.e)

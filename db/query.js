@@ -8,15 +8,15 @@ var connection = mysql.createConnection({
  
 connection.connect();
  
-// const getTasks = (callback) => {
-//   connection.query('SELECT * FROM tasks;', (err, data) => {
-//     if (err) {
-//       callback(err, null)
-//     } else {
-//       callback(null, data)
-//     }
-//   })
-// }
+const getOneItem = (callback) => {
+  connection.query('SELECT * FROM itemData;', (err, data) => {
+    if (err) {
+      callback(err, null)
+    } else {
+      callback(null, data)
+    }
+  })
+}
 
 // const createTask = (item, callback) => {
 //   connection.query(`INSERT INTO tasks (task) VALUES ('${item}');`, (err, data) => {
@@ -43,4 +43,4 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results) {
   console.log('The solution is: ', results[0].solution);
 });
 
-//module.exports = { getTasks, createTask, deleteTask }
+module.exports = { getOneItem }
