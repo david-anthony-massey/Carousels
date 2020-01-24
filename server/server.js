@@ -22,6 +22,16 @@ app.get('/getItem', (req, res) => {
   })
 })
 
+app.get('/getImages', (req, res) => {
+  db.getOneImages((err, results) => { 
+    if (err) {
+      console.log(err)
+    } else {
+      res.send(results)
+    }
+  })
+})
+
 // app.post('/tasks', (req, res) => { // .. // ...  req.body = ['shopping', 'gardening', 'laundry']
 //   // console.log("This is the req on server side: ", req.body.e)
 //   let task = req.body.newTask;

@@ -18,6 +18,16 @@ const getOneItem = (callback) => {
   })
 }
 
+const getOneImages = (callback) => {
+  connection.query('SELECT * FROM images;', (err, data) => {
+    if (err) {
+      callback(err, null)
+    } else {
+      callback(null, data)
+    }
+  })
+}
+
 // const createTask = (item, callback) => {
 //   connection.query(`INSERT INTO tasks (task) VALUES ('${item}');`, (err, data) => {
 //     if (err) {
@@ -43,4 +53,4 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results) {
   console.log('The solution is: ', results[0].solution);
 });
 
-module.exports = { getOneItem }
+module.exports = { getOneItem, getOneImages }

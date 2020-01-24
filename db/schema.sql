@@ -59,4 +59,17 @@ VALUES
 
   -- select images.imgUrl from images inner join itemData on images.productId=itemData.productId;
 
-  -- select (select itemData.productId,itemData.productName,itemData.productDescription,itemData.price, categories.category from itemData inner join categories on itemData.categoryId=categories.categoryId, select images.imgUrl from images inner join itemData on images.productId=itemData.productId);
+  -- select (select itemData.productId,itemData.productName,itemData.productDescription,itemData.price, categories.category from itemData inner join categories on itemData.categoryId=categories.categoryId,)
+
+  select 
+    itemData.productId,
+    itemData.productName,
+    itemData.productDescription,
+    itemData.price, 
+    categories.category,
+    images.imgUrl
+  from itemData
+  inner join categories on itemData.categoryId=categories.categoryId 
+  inner join images on images.productId=itemData.productId 
+  where itemData.productId = 1;
+ 

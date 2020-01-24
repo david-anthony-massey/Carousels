@@ -2,7 +2,7 @@ import React from 'react';
 //import data from './dummy_data'
 
 export default function Carousel(props) {
-  console.log(props.newData);
+  console.log(props);
   return (
     <div>
        {Array.from(props.newData).map((product, index) => {

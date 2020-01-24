@@ -6,8 +6,8 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      message: 'Rendered from State',
       data: '',
+      images: ''
     };
     this.getItem = this.getItem.bind(this);
   }
@@ -21,6 +21,10 @@ export default class App extends Component {
     .then((response) => {
       this.setState({data: response.data})
     })
+    axios.get(`/getImages`)
+    .then((response) => {
+      this.setState({images: response.data})
+    })
     .catch(function(error){
       console.log(error);
     })
@@ -29,7 +33,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Carousel newData={this.state.data}/>
+        <Carousel newData={this.state.data} newImages={this.state.images}/>
       </div>
     );
   }
