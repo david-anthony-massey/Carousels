@@ -6,7 +6,7 @@ export default function ProductBlock(props) {
     <div>
       {Array.from(props.data).map((product, index) => {
         return(
-          <div key={index}>
+          <div key={index} className='productBlock'>
             <img className='image' src={product.imgUrl}></img>
             <div className='textBox'>
               <div className='nameText'>{product.productName}</div>
