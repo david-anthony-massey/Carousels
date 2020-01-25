@@ -9,28 +9,19 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
 
-app.get('/getItem', (req, res) => {
-  db.getOneItem((err, results) => { 
+app.get('/getProducts', (req, res) => {
+  db.getProducts(1, (err, results) => { 
     if (err) {
-      console.log(err)
+      console.log(err);
+      res.end();
     } else {
-      res.send(results)
+      res.send(results);
     }
   })
 })
 
-app.get('/getImages', (req, res) => {
-  db.getOneImages((err, results) => { 
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(results)
-    }
-  })
-})
 
 // app.post('/tasks', (req, res) => { // .. // ...  req.body = ['shopping', 'gardening', 'laundry']
 //   // console.log("This is the req on server side: ", req.body.e)

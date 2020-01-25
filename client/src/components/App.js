@@ -9,21 +9,17 @@ export default class App extends Component {
       data: '',
       images: ''
     };
-    this.getItem = this.getItem.bind(this);
+    this.getProducts = this.getProducts.bind(this);
   }
 
   componentDidMount(){
-    this.getItem();
+    this.getProducts();
   }
 
-  getItem(){
-    axios.get(`/getItem`)
+  getProducts(){
+    axios.get(`/getProducts`)
     .then((response) => {
       this.setState({data: response.data})
-    })
-    axios.get(`/getImages`)
-    .then((response) => {
-      this.setState({images: response.data})
     })
     .catch(function(error){
       console.log(error);
@@ -33,7 +29,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Carousel newData={this.state.data} newImages={this.state.images}/>
+        <Carousel data={this.state.data} images={this.state.images}/>
       </div>
     );
   }

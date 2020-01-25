@@ -8,18 +8,9 @@ var connection = mysql.createConnection({
  
 connection.connect();
  
-const getOneItem = (callback) => {
-  connection.query('SELECT * FROM itemData;', (err, data) => {
-    if (err) {
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
-  })
-}
-
-const getOneImages = (callback) => {
-  connection.query('SELECT * FROM images;', (err, data) => {
+const getProducts = (categoryId, callback) => {
+  //connection.query(`SELECT * FROM itemData WHERE productID = ('${categoryId}');`, (err, data) => {
+  connection.query(`SELECT * FROM itemData;`, (err, data) => {
     if (err) {
       callback(err, null)
     } else {
@@ -53,4 +44,4 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results) {
   console.log('The solution is: ', results[0].solution);
 });
 
-module.exports = { getOneItem, getOneImages }
+module.exports = { getProducts }

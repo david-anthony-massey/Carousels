@@ -1,0 +1,22 @@
+.image {
+  width: 160px;
+  height: 160px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.textBox {
+  width: 160px;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal!
+}
+.nameText {
+  color: #0066c0; 
+}
+
+.priceText {
+  color: #B12704;
+}
+
+
