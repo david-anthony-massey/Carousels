@@ -1,4 +1,10 @@
 .carousel {
+  width: 1000%;
+  height: 150px;
+  background-color: #ff0000;
+  
+  overflow: visible;
+  white-space:nowrap;
 }
 
 .productBlock {
@@ -22,8 +28,12 @@
   color: #0066c0; 
 }
 
+.nameText:hover {
+  color: #c45500;
+  text-decoration: underline;
+  cursor: pointer; 
+}
+
 .priceText {
   color: #B12704;
 }
-
-

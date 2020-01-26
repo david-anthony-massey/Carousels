@@ -4,6 +4,6 @@ import ProductBlock from './ProductBlock';
 
 export default function Carousel(props) {
   return (
-    <ProductBlock className='carousel' data={props.data} images={props.images}/>
+    <ProductBlock data={props.data} images={props.images}/>
   );
 }
