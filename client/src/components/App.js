@@ -28,7 +28,7 @@ export default class App extends Component {
   }
 
   nextFive() {
-    this.setState({counter: this.state.counter+5});
+    this.setState({counter: this.state.counter+5}); 
     this.getFive();
   }
 
@@ -40,10 +40,12 @@ export default class App extends Component {
   getProducts() {
     axios.get(`/getProducts`)
     .then((response) => {
-      this.setState({productsAll: response.data})
+      this.setState({productsAll: response.data});
     })
     .then(() => {
-      this.getFive()
+      this.state.pages = this.state.productsAll.length/5;
+      this.getFive();
+      console.log(this.state.pages);
     })
     .catch(function(error) {
       console.log(error);
