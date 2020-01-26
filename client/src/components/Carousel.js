@@ -6,7 +6,7 @@ export default function Carousel(props) {
   return (
     <div>
       <button>Back</button>
-      <ProductBlock data={props.data} />
+      <ProductBlock productsFive={props.productsFive} />
       <button>Forward</button>
     </div>
   );

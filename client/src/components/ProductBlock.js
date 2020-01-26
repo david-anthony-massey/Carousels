@@ -5,7 +5,7 @@ export default function ProductBlock(props) {
   console.log(props);
   return (
     <div className='productContainer'>
-      {Array.from(props.data).map((product, index) => {
+      {Array.from(props.productsFive).map((product, index) => {
         return(
           <div key={index} className='productBlock'>
             <img className='image' src={product.imgUrl}></img>

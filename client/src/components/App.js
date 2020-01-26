@@ -6,8 +6,8 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      data: '',
-      dataFive: '',
+      productsAll: '',
+      productsFive: '',
       count: 1,
       pages: ''
     };
@@ -20,15 +20,15 @@ export default class App extends Component {
   }
 
   getFive() {
-    let getFive = this.state.data.slice(0,5);
-    this.setState({dataFive: getFive})
-    console.log(this.state.dataFive)
+    let getFive = this.state.productsAll.slice(0,5);
+    this.setState({productsFive: getFive})
+    console.log(this.state.productsFive)
   }
 
   getProducts() {
     axios.get(`/getProducts`)
     .then((response) => {
-      this.setState({data: response.data})
+      this.setState({productsAll: response.data})
     })
     .then(() => {
       this.getFive()
@@ -41,7 +41,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Carousel data={this.state.data} />
+        <Carousel productsFive={this.state.productsFive} />
       </div>
     );
   }
