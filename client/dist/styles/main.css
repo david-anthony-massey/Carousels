@@ -1,14 +1,16 @@
 .carousel {
-  width: 1000%;
+  display: inline-block;
   height: 150px;
-  background-color: #ff0000;
-  
-  overflow: visible;
+}
+
+.productContainer {
+  /* overflow:scroll; */
   white-space:nowrap;
 }
 
 .productBlock {
   display: inline-block;
+  white-space: normal;
 }
 
 .image {

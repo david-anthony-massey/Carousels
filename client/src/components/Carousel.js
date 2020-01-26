@@ -4,6 +4,10 @@ import ProductBlock from './ProductBlock';
 
 export default function Carousel(props) {
   return (
-    <ProductBlock data={props.data} images={props.images}/>
+    <div>
+      <button>Back</button>
+      <ProductBlock data={props.data} />
+      <button>Forward</button>
+    </div>
   );
 }

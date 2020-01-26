@@ -7,21 +7,33 @@ export default class App extends Component {
     super();
     this.state = {
       data: '',
-      images: ''
+      dataFive: '',
+      count: 1,
+      pages: ''
     };
     this.getProducts = this.getProducts.bind(this);
+    this.getFive = this.getFive.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getProducts();
   }
 
-  getProducts(){
+  getFive() {
+    let getFive = this.state.data.slice(0,5);
+    this.setState({dataFive: getFive})
+    console.log(this.state.dataFive)
+  }
+
+  getProducts() {
     axios.get(`/getProducts`)
     .then((response) => {
       this.setState({data: response.data})
     })
-    .catch(function(error){
+    .then(() => {
+      this.getFive()
+    })
+    .catch(function(error) {
       console.log(error);
     })
   }
@@ -29,7 +41,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Carousel data={this.state.data} images={this.state.images}/>
+        <Carousel data={this.state.data} />
       </div>
     );
   }
