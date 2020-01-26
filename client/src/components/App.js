@@ -8,11 +8,13 @@ export default class App extends Component {
     this.state = {
       productsAll: '',
       productsFive: '',
-      count: 1,
+      counter: 0,
       pages: ''
     };
     this.getProducts = this.getProducts.bind(this);
     this.getFive = this.getFive.bind(this);
+    this.nextFive = this.nextFive.bind(this);
+    this.lastFive = this.lastFive.bind(this);
   }
 
   componentDidMount() {
@@ -20,9 +22,19 @@ export default class App extends Component {
   }
 
   getFive() {
-    let getFive = this.state.productsAll.slice(0,5);
+    let getFive = this.state.productsAll.slice(this.state.counter, this.state.counter+5);
     this.setState({productsFive: getFive})
     console.log(this.state.productsFive)
+  }
+
+  nextFive() {
+    this.setState({counter: this.state.counter+5});
+    this.getFive();
+  }
+
+  lastFive() {
+    this.setState({counter: this.state.counter-5});
+    this.getFive();
   }
 
   getProducts() {
@@ -41,7 +53,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Carousel productsFive={this.state.productsFive} />
+        <Carousel productsFive={this.state.productsFive} nextFive={this.nextFive} lastFive={this.lastFive}/>
       </div>
     );
   }

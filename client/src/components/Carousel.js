@@ -4,10 +4,10 @@ import ProductBlock from './ProductBlock';
 
 export default function Carousel(props) {
   return (
-    <div>
-      <button>Back</button>
+    <div className ='carouselContainer'>
+      <button className='button' onClick={props.lastFive}> &lt; </button> 
       <ProductBlock productsFive={props.productsFive} />
-      <button>Forward</button>
+      <button className='button' onClick={props.nextFive}> &gt; </button>
     </div>
   );
 }
