@@ -34,7 +34,7 @@ export default class App extends Component {
     if (!(this.state.counter+5 >= this.state.productsNumber)) {
       nextCounter = this.state.counter+5;
     }
-    this.setState({counter: nextCounter}, ()=>{this.getFive()});
+    this.setState({counter: nextCounter}, () => {this.getFive()});
   }
 
    // Decrements state.counter and loads last 5 items when left button clicked
@@ -42,14 +42,14 @@ export default class App extends Component {
     let lastCounter = 0;
     if (this.state.counter-5 <= 0) {
       if (this.state.productsNumber%5 === 0) {
-        lastCounter = this.state.productsNumber - 5
+        lastCounter = this.state.productsNumber - 5;
       } else {
-        lastCounter = this.state.productsNumber - (this.state.productsNumber%5)
+        lastCounter = this.state.productsNumber - (this.state.productsNumber%5);
       }
     } else {
-      lastCounter = this.state.counter-5
+      lastCounter = this.state.counter-5;
     }  
-    this.setState({counter: lastCounter}, ()=>{this.getFive()});
+    this.setState({counter: lastCounter}, () => {this.getFive()});
   }
 
   // Gets all products in db that meet search criteria and assigns them to productsAll

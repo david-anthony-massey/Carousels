@@ -12,10 +12,11 @@ export default function Product(props) {
                 <div className='nameText'>{product.productName}</div>
                   <StarRatingComponent 
                     name={'rating' + index}
-                    //editing={false}
+                    editing={false}
                     renderStarIcon={() => <span>🍁</span>}
-                    emptyStarColor={'#ffffff'}
-                    starColor='#ff0000'
+                    starCount={Math.round(product.rating)}
+                    //emptyStarColor={'#ffffff'}
+                    //starColor='#ff0000'
                   />
                 <div className='priceText'>${(product.price).toFixed(2)}</div>
               </div>
