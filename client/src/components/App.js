@@ -20,29 +20,39 @@ export default class App extends Component {
   componentDidMount() {
     this.getProducts();
   }
-
+  
+  // Retrieves 5 products from productsAll (results of getProducts db query) and assigns them to productsFive
   getFive() {
     let getFive = this.state.productsAll.slice(this.state.counter, this.state.counter+5);
-    this.setState({productsFive: getFive})
-    console.log(this.state.productsFive)
+    this.setState({productsFive: getFive});
+    console.log(this.state.productsFive);
   }
-
+  
+  // Increments state.counter and loads next 5 items when right button clicked
   nextFive() {
-    if (this.state.counter+5 >= this.state.productsNumber) {
-      this.setState({counter: 0}, ()=>{this.getFive()});
-    } else {
-      this.setState({counter: this.state.counter+5}, ()=>{this.getFive()});
+    let nextCounter = 0;
+    if (!(this.state.counter+5 >= this.state.productsNumber)) {
+      nextCounter = this.state.counter+5;
     }
+    this.setState({counter: nextCounter}, ()=>{this.getFive()});
   }
 
+   // Decrements state.counter and loads last 5 items when left button clicked
   lastFive() {
+    let lastCounter = 0;
     if (this.state.counter-5 <= 0) {
-      this.setState({counter: this.state.productsNumber - (this.state.productsNumber%5) - 5}, ()=>{this.getFive()});
+      if (this.state.productsNumber%5 === 0) {
+        lastCounter = this.state.productsNumber - 5
+      } else {
+        lastCounter = this.state.productsNumber - (this.state.productsNumber%5)
+      }
     } else {
-      this.setState({counter: this.state.counter-5}, ()=>{this.getFive()});
+      lastCounter = this.state.counter-5
     }  
+    this.setState({counter: lastCounter}, ()=>{this.getFive()});
   }
 
+  // Gets all products in db that meet search criteria and assigns them to productsAll
   getProducts() {
     axios.get(`/getProducts`)
     .then((response) => {
@@ -54,7 +64,7 @@ export default class App extends Component {
     })
     .catch(function(error) {
       console.log(error);
-    })
+    });
   }
   
   render() {
