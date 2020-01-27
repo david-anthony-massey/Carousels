@@ -1,8 +1,7 @@
 import React from 'react';
 import StarRatingComponent from 'react-star-rating-component';
 
-export default function ProductBlock(props) {
-  console.log(props);
+export default function Product(props) {
   return (
     <div className='productContainer'>
         {Array.from(props.productsFive).map((product, index) => {

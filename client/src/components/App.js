@@ -6,10 +6,10 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
+      counter: 0,
       productsAll: '',
       productsFive: '',
-      counter: 0,
-      pages: ''
+      productsNumber: ''
     };
     this.getProducts = this.getProducts.bind(this);
     this.getFive = this.getFive.bind(this);
@@ -28,13 +28,19 @@ export default class App extends Component {
   }
 
   nextFive() {
-    this.setState({counter: this.state.counter+5}); 
-    this.getFive();
+    if (this.state.counter+5 >= this.state.productsNumber) {
+      this.setState({counter: 0}, ()=>{this.getFive()});
+    } else {
+      this.setState({counter: this.state.counter+5}, ()=>{this.getFive()});
+    }
   }
 
   lastFive() {
-    this.setState({counter: this.state.counter-5});
-    this.getFive();
+    if (this.state.counter-5 <= 0) {
+      this.setState({counter: this.state.productsNumber - (this.state.productsNumber%5) - 5}, ()=>{this.getFive()});
+    } else {
+      this.setState({counter: this.state.counter-5}, ()=>{this.getFive()});
+    }  
   }
 
   getProducts() {
@@ -43,9 +49,8 @@ export default class App extends Component {
       this.setState({productsAll: response.data});
     })
     .then(() => {
-      this.state.pages = this.state.productsAll.length/5;
+      this.state.productsNumber = this.state.productsAll.length;
       this.getFive();
-      console.log(this.state.pages);
     })
     .catch(function(error) {
       console.log(error);
