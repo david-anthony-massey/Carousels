@@ -40,7 +40,7 @@ export default class App extends Component {
    // Decrements state.counter and loads last 5 items when left button clicked
   lastFive() {
     let lastCounter = 0;
-    if (this.state.counter-5 <= 0) {
+    if (this.state.counter-5 < 0) {
       if (this.state.productsNumber%5 === 0) {
         lastCounter = this.state.productsNumber - 5;
       } else {
@@ -70,7 +70,13 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Carousel productsFive={this.state.productsFive} nextFive={this.nextFive} lastFive={this.lastFive}/>
+        <Carousel 
+          productsFive={this.state.productsFive} 
+          nextFive={this.nextFive} 
+          lastFive={this.lastFive} 
+          counter={this.state.counter}
+          productsNumber={this.state.productsNumber}
+        />
       </div>
     );
   }
