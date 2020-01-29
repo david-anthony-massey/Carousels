@@ -7,7 +7,7 @@ export default class App extends Component {
     super();
     this.state = {
       productId: '',
-      categoryId: '1', // If category id = 0; return all categories
+      categoryId: '0', // If category id = 0; return all categories
       counter: 0,
       productsAll: '',
       productsFive: '',
@@ -26,14 +26,20 @@ export default class App extends Component {
   }
 
   goToProduct() {
-    this.setState({productId: event.target.id}, () => {
-      console.log(`state.productId = ${this.state.productId} to send user to product page`)
-    });
+    this.setState({productId: event.target.id, categoryId: document.getElementById(event.target.id).getAttribute('data-cat')}, () => {
+      console.log ('Insert go to Product Page function here')
+      console.log(`state.productId = ${this.state.productId}, state.categoryId = ${this.state.categoryId}`);
+      this.state.counter = 0;
+      this.getProducts();
+    })
   }
 
   goToRating() {
-    this.setState({productId: event.target.id}, () => {
-      console.log(`state.productId = ${this.state.productId} to send user to ratings page`)
+    this.setState({productId: event.target.id, categoryId: document.getElementById(event.target.id).getAttribute('data-cat')}, () => {
+      console.log ('Insert go to Ratings Page function here')
+      console.log(`state.productId = ${this.state.productId}, state.categoryId = ${this.state.categoryId}`);
+      this.state.counter = 0;
+      this.getProducts();
     });
   }
   
