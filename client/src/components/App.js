@@ -26,11 +26,15 @@ export default class App extends Component {
   }
 
   goToProduct() {
-    console.log('Will send customer to product page', event.target.id);
+    this.setState({productId: event.target.id}, () => {
+      console.log(`Sets state to productId ${this.state.productId} to send user to product page for productId`)
+    });
   }
 
   goToRating() {
-    console.log('Will send customer to rating page', event.target.name);
+    this.setState({productId: event.target.name}, () => {
+      console.log(`Sets state to productId ${this.state.productId} to send user to ratings page for productId`)
+    });
   }
   
   // Retrieves 5 products from productsAll (results of getProducts db query) and assigns them to productsFive
