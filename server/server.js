@@ -12,8 +12,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
 
-app.get('/getProducts', (req, res) => {
-  db.getProducts(1, (err, results) => { 
+app.get('/getProducts/:categoryId', (req, res) => {
+  const categoryId = req.params.categoryId;
+  db.getProducts(categoryId, (err, results) => { 
     if (err) {
       console.log(err);
       res.end();

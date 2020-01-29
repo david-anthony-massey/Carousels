@@ -9,14 +9,23 @@ var connection = mysql.createConnection({
 connection.connect();
  
 const getProducts = (categoryId, callback) => {
-  //connection.query(`SELECT * FROM itemData WHERE productID = ('${categoryId}');`, (err, data) => {
-  connection.query(`SELECT * FROM itemData;`, (err, data) => {
-    if (err) {
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
-  })
+  if (categoryId == '0') {
+    connection.query(`SELECT * FROM itemData;`, (err, data) => {
+      if (err) {
+        callback(err, null)
+      } else {
+        callback(null, data)
+      }
+    })
+  } else {
+    connection.query(`SELECT * FROM itemData WHERE categoryID = ('${categoryId}');`, (err, data) => {
+      if (err) {
+        callback(err, null)
+      } else {
+        callback(null, data)
+      }
+    })
+  }
 }
 
 // const createTask = (item, callback) => {

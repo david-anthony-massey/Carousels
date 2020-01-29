@@ -10,7 +10,7 @@
   /* background-color: crimson; */
   display: inline-flex;
   /* justify-content: space-between; */
-  justify-content: center;
+  justify-content: space-between;
   align-items: baseline;
 }
 
@@ -33,7 +33,7 @@
   color: rgb(87, 85, 85);
   height: 32px;
   width: 37px;
-  padding: 6px 6px 32px 6px;
+  padding: 6px 24px 32px 12px;
   background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
   border-radius: 3px;
   border-color: #ADB1B8 #A2A6AC #8D9096;
@@ -67,6 +67,10 @@
   height: 160px;
   background-position: center center;
   background-repeat: no-repeat;
+}
+
+.image:hover {
+  cursor: pointer;
 }
 
 .textBox {
