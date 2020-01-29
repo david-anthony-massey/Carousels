@@ -27,13 +27,13 @@ export default class App extends Component {
 
   goToProduct() {
     this.setState({productId: event.target.id}, () => {
-      console.log(`Sets state to productId ${this.state.productId} to send user to product page for productId`)
+      console.log(`state.productId = ${this.state.productId} to send user to product page`)
     });
   }
 
   goToRating() {
-    this.setState({productId: event.target.name}, () => {
-      console.log(`Sets state to productId ${this.state.productId} to send user to ratings page for productId`)
+    this.setState({productId: event.target.id}, () => {
+      console.log(`state.productId = ${this.state.productId} to send user to ratings page`)
     });
   }
   
@@ -41,7 +41,7 @@ export default class App extends Component {
   getFive() {
     let getFive = this.state.productsAll.slice(this.state.counter, this.state.counter+5);
     this.setState({productsFive: getFive});
-    console.log(this.state.productsFive);
+    console.log('getFive =', this.state.productsFive);
   }
   
   // Increments state.counter and loads next 5 items when right button clicked
