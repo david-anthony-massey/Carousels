@@ -8,12 +8,12 @@ export default function Product(props) {
       {Array.from(props.productsFive).map((product, index) => {
         return(
           <div key={index} className='productBlock'>
-            <img className='image' src={product.imgUrl} onClick={props.goToProduct}></img>
+            <img className='image' src={product.imgUrl} id={product.productId} onClick={props.goToProduct}></img>
             <div className='textBox'>
-              <div className='nameText' onClick={props.goToProduct}>{product.productName}</div>
+              <div className='nameText' id={product.productId} onClick={props.goToProduct}>{product.productName}</div>
                 <div onClick={props.goToRating} className='rating'>
                   <StarRatingComponent
-                    name={'rating' + index}
+                    name={product.productId.toString()}
                     editing={false}
                     renderStarIcon={() => <span>🍁</span>}
                     starCount={Math.round(product.rating)}
@@ -21,7 +21,7 @@ export default function Product(props) {
                     //starColor='#ff0000'
                   />
                 </div>
-              <div className='priceText' onClick={props.goToProduct}>${(product.price).toFixed(2)}</div>
+              <div className='priceText' id={product.productId} onClick={props.goToProduct}>${(product.price).toFixed(2)}</div>
             </div>
           </div>
         )

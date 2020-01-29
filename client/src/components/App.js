@@ -7,7 +7,7 @@ export default class App extends Component {
     super();
     this.state = {
       productId: '',
-      categoryId: '0', // If category id = 0; return all categories
+      categoryId: '1', // If category id = 0; return all categories
       counter: 0,
       productsAll: '',
       productsFive: '',
@@ -26,11 +26,11 @@ export default class App extends Component {
   }
 
   goToProduct() {
-    console.log('Will send customer to product page');
+    console.log('Will send customer to product page', event.target.id);
   }
 
   goToRating() {
-    console.log('Will send customer to rating page');
+    console.log('Will send customer to rating page', event.target.name);
   }
   
   // Retrieves 5 products from productsAll (results of getProducts db query) and assigns them to productsFive

@@ -9,8 +9,6 @@
   width: 100%;
   /* background-color: crimson; */
   display: inline-flex;
-  /* justify-content: space-between; */
-  justify-content: space-between;
   align-items: baseline;
 }
 
@@ -53,7 +51,7 @@
   white-space: nowrap;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .productBlock {
