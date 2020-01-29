@@ -7,7 +7,7 @@ export default class App extends Component {
     super();
     this.state = {
       productId: '',
-      categoryId: '0', // If category id = 0; return all categories
+      categoryId: 0, // If category id = 0; return all categories
       counter: 0,
       productsAll: '',
       productsFive: '',
@@ -19,6 +19,7 @@ export default class App extends Component {
     this.lastFive = this.lastFive.bind(this);
     this.goToProduct = this.goToProduct.bind(this);
     this.goToRating = this.goToRating.bind(this);
+    this.resetProducts = this.resetProducts.bind(this);
   }
 
   componentDidMount() {
@@ -88,6 +89,13 @@ export default class App extends Component {
       console.log(error);
     });
   }
+
+  resetProducts() {
+    console.log('Hello')
+    this.setState({categoryId: 0, counter: 0}, () => {
+      console.log(this.state.category)
+      this.getProducts()})
+  }
   
   render() {
     return (
@@ -101,6 +109,7 @@ export default class App extends Component {
           goToProduct={this.goToProduct}
           goToRating={this.goToRating}
         />
+        <button onClick={this.resetProducts}>See All Products</button>
       </div>
     );
   }
