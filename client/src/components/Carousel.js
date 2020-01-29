@@ -11,7 +11,7 @@ export default function Carousel(props) {
       </div>
       <div className ='carouselContainer'>
         <button className='button' onClick={props.lastFive}> &lt; </button> 
-        <Product productsFive={props.productsFive} goToProduct={props.goToProduct}/>
+        <Product productsFive={props.productsFive} goToProduct={props.goToProduct} goToRating={props.goToRating}/>
         <button className='button' onClick={props.nextFive}> &gt; </button>
       </div>
     </div>

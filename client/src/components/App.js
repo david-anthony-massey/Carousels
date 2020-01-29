@@ -6,8 +6,8 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      // If category id = 0; return all
-      categoryId: '0',
+      productId: '',
+      categoryId: '0', // If category id = 0; return all categories
       counter: 0,
       productsAll: '',
       productsFive: '',
@@ -18,6 +18,7 @@ export default class App extends Component {
     this.nextFive = this.nextFive.bind(this);
     this.lastFive = this.lastFive.bind(this);
     this.goToProduct = this.goToProduct.bind(this);
+    this.goToRating = this.goToRating.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,10 @@ export default class App extends Component {
 
   goToProduct() {
     console.log('Will send customer to product page');
+  }
+
+  goToRating() {
+    console.log('Will send customer to rating page');
   }
   
   // Retrieves 5 products from productsAll (results of getProducts db query) and assigns them to productsFive
@@ -59,7 +64,7 @@ export default class App extends Component {
     this.setState({counter: lastCounter}, () => {this.getFive()});
   }
 
-  // Gets all products in db that meet search criteria and assigns them to productsAll
+  // Gets all products in db that match categoryId (0 being all) and assigns them to productsAll
   getProducts() {
     axios.get(`/getProducts/${this.state.categoryId}`)
     .then((response) => {
@@ -84,6 +89,7 @@ export default class App extends Component {
           counter={this.state.counter}
           productsNumber={this.state.productsNumber}
           goToProduct={this.goToProduct}
+          goToRating={this.goToRating}
         />
       </div>
     );

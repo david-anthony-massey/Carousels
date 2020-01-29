@@ -62,6 +62,10 @@
   margin: 0px 15px 0px 15px;
 }
 
+.rating:hover {
+  cursor: pointer; 
+}
+
 .image {
   width: 160px;
   height: 160px;
@@ -92,4 +96,8 @@
 
 .priceText {
   color: #B12704;
+}
+
+.priceText:hover {
+   cursor: pointer;  
 }
