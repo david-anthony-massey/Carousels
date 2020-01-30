@@ -1,32 +1,33 @@
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'password',
-  database : 'saskatchewanizon'
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'saskatchewanizon',
 });
- 
+
 connection.connect();
- 
+
 const getProducts = (categoryId, callback) => {
-  if (categoryId == '0') {
+  if (categoryId === '0') {
     connection.query(`SELECT * FROM itemData;`, (err, data) => {
       if (err) {
-        callback(err, null)
+        callback(err, null);
       } else {
-        callback(null, data)
+        callback(null, data);
       }
-    })
+    });
   } else {
     connection.query(`SELECT * FROM itemData WHERE categoryID = ('${categoryId}');`, (err, data) => {
       if (err) {
-        callback(err, null)
+        callback(err, null);
       } else {
-        callback(null, data)
+        callback(null, data);
       }
-    })
+    });
   }
-}
+};
 
 // const createTask = (item, callback) => {
 //   connection.query(`INSERT INTO tasks (task) VALUES ('${item}');`, (err, data) => {
@@ -48,9 +49,9 @@ const getProducts = (categoryId, callback) => {
 //   })
 // }
 
-connection.query('SELECT 1 + 1 AS solution', function (error, results) {
+connection.query('SELECT 1 + 1 AS solution', (error, results) => {
   if (error) throw error;
   console.log('The solution is: ', results[0].solution);
 });
 
-module.exports = { getProducts }
+module.exports = { getProducts };

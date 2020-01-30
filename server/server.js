@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors'); 
+const cors = require('cors');
 const bodyParser = require('body-parser');
+const db = require('../db/query.js');
 
-const db = require('../db/query.js')
 const port = 8080;
 const app = express();
 
@@ -14,22 +14,22 @@ app.use(express.static('client/dist'));
 
 app.get('/getProducts/:categoryId', (req, res) => {
   const categoryId = req.params.categoryId;
-  db.getProducts(categoryId, (err, results) => { 
+  db.getProducts(categoryId, (err, results) => {
     if (err) {
       console.log(err);
       res.end();
     } else {
       res.send(results);
     }
-  })
-})
+  });
+});
 
 
 // app.post('/tasks', (req, res) => { // .. // ...  req.body = ['shopping', 'gardening', 'laundry']
 //   // console.log("This is the req on server side: ", req.body.e)
 //   let task = req.body.newTask;
 
-//   db.createTask(task, (err, results) => { 
+//   db.createTask(task, (err, results) => {
 //     if (err) {
 //       console.log(err)
 //     } else {
@@ -50,7 +50,7 @@ app.get('/getProducts/:categoryId', (req, res) => {
 //     }
 //   })
 // })
-    
+
 app.listen(port, () => {
-  console.log(`Listening on port: ${port}`)
-})
+  console.log(`Listening on port: ${port}`);
+});
