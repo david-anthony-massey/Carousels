@@ -28,7 +28,7 @@ export default class App extends Component {
 
   goToProduct() {
     this.setState({productId: event.target.id, categoryId: document.getElementById(event.target.id).getAttribute('data-cat')}, () => {
-      console.log ('Insert go to Product Page function here')
+      console.log ('Insert go to Product Page function here');
       console.log(`state.productId = ${this.state.productId}, state.categoryId = ${this.state.categoryId}`);
       this.state.counter = 0;
       this.getProducts();
@@ -91,9 +91,7 @@ export default class App extends Component {
   }
 
   resetProducts() {
-    console.log('Hello')
     this.setState({categoryId: 0, counter: 0}, () => {
-      console.log(this.state.category)
       this.getProducts()})
   }
   
