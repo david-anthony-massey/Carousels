@@ -1,6 +1,5 @@
 import React from 'react';
 import Rating from './Rating.js';
-import StarRatingComponent from 'react-star-rating-component';
 
 export default function Product(props) {
   return (
