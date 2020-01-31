@@ -29,8 +29,8 @@ const getProducts = (categoryId, callback) => {
   }
 };
 
-// const createTask = (item, callback) => {
-//   connection.query(`INSERT INTO tasks (task) VALUES ('${item}');`, (err, data) => {
+// const addProduct = (item, callback) => {
+//   connection.query(`INSERT INTO itemData (productId) VALUES ('${item}');`, (err, data) => {
 //     if (err) {
 //       callback(err, null)
 //     } else {
@@ -39,8 +39,8 @@ const getProducts = (categoryId, callback) => {
 //   })
 // }
 
-// const deleteTask = (item, callback) => {
-//   connection.query(`DELETE FROM tasks WHERE id=('${item}');`, (err, data) => {
+// const deleteProduct = (item, callback) => {
+//   connection.query(`DELETE FROM itemData WHERE id=('${productId}');`, (err, data) => {
 //     if (err) {
 //       callback(err, null)
 //     } else {

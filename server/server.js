@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('../db/query.js');
 
-const port = 8080;
+const port = 8001;
 const app = express();
 
 app.use(cors());
@@ -22,6 +22,10 @@ app.get('/getProducts/:categoryId', (req, res) => {
       res.send(results);
     }
   });
+});
+
+app.get('/app1/hello', (req, res) => {
+  res.send('Hello world From Server 1');
 });
 
 
