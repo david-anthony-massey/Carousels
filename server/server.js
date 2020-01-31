@@ -24,16 +24,9 @@ app.get('/getProducts/:categoryId', (req, res) => {
   });
 });
 
-app.get('/app1/hello', (req, res) => {
-  res.send('Hello world From Server 1');
-});
-
-
-// app.post('/tasks', (req, res) => { // .. // ...  req.body = ['shopping', 'gardening', 'laundry']
-//   // console.log("This is the req on server side: ", req.body.e)
-//   let task = req.body.newTask;
-
-//   db.createTask(task, (err, results) => {
+// app.post('/addProduct', (req, res) => {
+//   const product = req.body.product;
+//   db.addProduct(product, (err, results) => {
 //     if (err) {
 //       console.log(err)
 //     } else {
@@ -42,11 +35,9 @@ app.get('/app1/hello', (req, res) => {
 //   })
 // })
 
-// app.delete('/deleteTask/:id', (req, res) => {
-//   console.log("What? ", req.params);
-//   const id = req.params.id;
-
-//   db.deleteTask(id, (err, results) => {
+// app.delete('/deleteProduct/:productId', (req, res) => {
+//   const productId = req.params.productId;
+//   db.deleteProduct(productId, (err, results) => {
 //     if (err) {
 //       console.log(err)
 //     } else {
