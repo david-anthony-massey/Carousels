@@ -9,8 +9,8 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-const getProducts = (categoryId, callback) => {
-  if (categoryId == '0') {
+const getProducts = (productId, callback) => {
+  if (productId == '0') {
     connection.query(`SELECT * FROM itemData;`, (err, data) => {
       if (err) {
         callback(err, null);
@@ -19,7 +19,7 @@ const getProducts = (categoryId, callback) => {
       }
     });
   } else {
-    connection.query(`SELECT * FROM itemData WHERE categoryID = ('${categoryId}');`, (err, data) => {
+    connection.query(`SELECT * FROM itemData WHERE categoryID = (SELECT categoryId FROM itemData WHERE productId = ('${productId}'));`, (err, data) => {
       if (err) {
         callback(err, null);
       } else {
@@ -28,6 +28,8 @@ const getProducts = (categoryId, callback) => {
     });
   }
 };
+
+// `SELECT * FROM itemData WHERE categoryId = (SELECT categoryId FROM itemData WHERE productId = ${productId});`
 
 // const addProduct = (product, callback) => {
 //   connection.query(`INSERT INTO itemData (productId,...) VALUES ('${product}',...);`, (err, data) => {

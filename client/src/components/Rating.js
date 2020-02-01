@@ -20,7 +20,6 @@ export default function Rating({ product, goToRating }) {
         src={image}
         alt='Leaf' 
         id={product.productId} 
-        data-cat={product.categoryId}  
         className='rating' 
         onClick={goToRating} 
         height='27px' 

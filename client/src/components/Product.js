@@ -11,7 +11,6 @@ export default function Product(props) {
               className="image" 
               src={product.imgUrl}
               id={product.productId}
-              data-cat={product.categoryId}
               onClick={props.goToProduct}
             />
             <div className="textBox">

@@ -7,8 +7,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      productId: '',
-      categoryId: 0, // If category id = 0; return all categories
+      productId: 0, // If category id = 0; return all products
       counter: 0,
       productsAll: '',
       productsFive: '',
@@ -36,7 +35,7 @@ export default class App extends Component {
 
   // Gets all products in db that match categoryId (0 being all) and assigns them to productsAll
   getProducts() {
-    axios.get(`carousel/getProducts/${this.state.categoryId}`)
+    axios.get(`carousel/getProducts/${this.state.productId}`)
       .then((response) => {
         this.setState({ productsAll: response.data });
       })
@@ -50,18 +49,18 @@ export default class App extends Component {
   }
 
   goToProduct() {
-    this.setState({ productId: event.target.id, categoryId: document.getElementById(event.target.id).getAttribute('data-cat') }, () => {
+    this.setState({ productId: event.target.id }, () => {
       console.log('Insert go to Product Page function here');
-      console.log(`state.productId = ${this.state.productId}, state.categoryId = ${this.state.categoryId}`);
+      console.log(`state.productId = ${this.state.productId}`);
       this.state.counter = 0;
       this.getProducts();
     });
   }
 
   goToRating() {
-    this.setState({ productId: event.target.id, categoryId: document.getElementById(event.target.id).getAttribute('data-cat') }, () => {
+    this.setState({ productId: event.target.id }, () => {
       console.log('Insert go to Ratings Page function here');
-      console.log(`state.productId = ${this.state.productId}, state.categoryId = ${this.state.categoryId}`);
+      console.log(`state.productId = ${this.state.productId}`);
       this.state.counter = 0;
       this.getProducts();
     });
@@ -92,7 +91,7 @@ export default class App extends Component {
   }
 
   resetProducts() {
-    this.setState({ categoryId: 0, counter: 0 }, () => {
+    this.setState({ productId: 0, counter: 0 }, () => {
       this.getProducts();
     });
   }

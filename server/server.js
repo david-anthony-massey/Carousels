@@ -12,9 +12,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('client/dist'));
 
-app.get('/carousel/getProducts/:categoryId', (req, res) => {
-  const categoryId = req.params.categoryId;
-  db.getProducts(categoryId, (err, results) => {
+app.get('/carousel/getProducts/:productId', (req, res) => {
+  const productId = req.params.productId;
+  db.getProducts(productId, (err, results) => {
     if (err) {
       console.log(err);
       res.end();
