@@ -17,9 +17,20 @@ export default class App extends Component {
     this.getFive = this.getFive.bind(this);
     this.nextFive = this.nextFive.bind(this);
     this.lastFive = this.lastFive.bind(this);
-    this.goToProduct = this.goToProduct.bind(this);
+    // this.goToProduct = this.goToProduct.bind(this);
     this.goToRating = this.goToRating.bind(this);
     this.resetProducts = this.resetProducts.bind(this);
+
+    // const event = new Event('click');
+    window.productId = 0;
+    window.addEventListener('click', (event) => {
+      this.setState({ productId: event.target.id }, () => {
+        console.log('Insert go to Product Page function here');
+        console.log(`state.productId = ${this.state.productId}`);
+        this.getProducts();
+      });
+    }, false);
+    // window.dispatchEvent(event);
   }
 
   componentDidMount() {
@@ -48,14 +59,13 @@ export default class App extends Component {
       });
   }
 
-  goToProduct() {
-    this.setState({ productId: event.target.id }, () => {
-      console.log('Insert go to Product Page function here');
-      console.log(`state.productId = ${this.state.productId}`);
-      this.state.counter = 0;
-      this.getProducts();
-    });
-  }
+  // goToProduct() {
+  //   this.setState({ productId: event.target.id }, () => {
+  //     console.log('Insert go to Product Page function here');
+  //     console.log(`state.productId = ${this.state.productId}`);
+  //     this.getProducts();
+  //   });
+  // }
 
   goToRating() {
     this.setState({ productId: event.target.id }, () => {
