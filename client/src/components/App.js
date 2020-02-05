@@ -18,17 +18,17 @@ export default class App extends Component {
     this.nextFive = this.nextFive.bind(this);
     this.lastFive = this.lastFive.bind(this);
     // this.goToProduct = this.goToProduct.bind(this);
-    this.goToRating = this.goToRating.bind(this);
+    // this.goToRating = this.goToRating.bind(this);
     this.resetProducts = this.resetProducts.bind(this);
 
     // const event = new Event('click');
-    window.productId = 0;
     window.addEventListener('click', (event) => {
-      this.setState({ productId: event.target.id }, () => {
-        console.log('Insert go to Product Page function here');
-        console.log(`state.productId = ${this.state.productId}`);
-        this.getProducts();
-      });
+      if (event.target.id) {
+        this.setState({ productId: event.target.id }, () => {
+          console.log(`state.productId = ${this.state.productId}`);
+          this.getProducts();
+        });
+      }
     }, false);
     // window.dispatchEvent(event);
   }
@@ -67,14 +67,14 @@ export default class App extends Component {
   //   });
   // }
 
-  goToRating() {
-    this.setState({ productId: event.target.id }, () => {
-      console.log('Insert go to Ratings Page function here');
-      console.log(`state.productId = ${this.state.productId}`);
-      this.state.counter = 0;
-      this.getProducts();
-    });
-  }
+  // goToRating() {
+  //   this.setState({ productId: event.target.id }, () => {
+  //     console.log('Insert go to Ratings Page function here');
+  //     console.log(`state.productId = ${this.state.productId}`);
+  //     this.state.counter = 0;
+  //     this.getProducts();
+  //   });
+  // }
 
   // Increments state.counter and loads next 5 items when right button clicked
   nextFive() {
@@ -115,8 +115,8 @@ export default class App extends Component {
           lastFive={this.lastFive}
           counter={this.state.counter}
           productsNumber={this.state.productsNumber}
-          goToProduct={this.goToProduct}
-          goToRating={this.goToRating}
+          // goToProduct={this.goToProduct}
+          // goToRating={this.goToRating}
         />
         <button onClick={this.resetProducts} type="button">See All Products</button>
       </div>
