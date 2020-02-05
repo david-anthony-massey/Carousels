@@ -1,18 +1,18 @@
-.componentContainer {
+.carousel-componentContainer {
   padding: 0px 10px 10px 10px;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
 
-.carouselContainer {
+.carousel-carouselContainer {
   white-space: nowrap;
   width: 100%;
-  /* background-color: crimson; */
+  height: 100%;
   display: inline-flex;
   align-items: baseline;
 }
 
-.customerText {
+.carousel-customerText {
   color: #C60;
   font-size: 16px;
   font-family: verdana, arial, helvetica, sans-serif;
@@ -20,13 +20,13 @@
   float: left;
 }
 
-.pagesText {
+.carousel-pagesText {
   font-family: "Amazon Ember", Arial, sans-serif;
   font-size: 13px;
   float: right;
 }
 
-.button {
+.carousel-button {
   font-size: 20px;
   color: rgb(87, 85, 85);
   height: 32px;
@@ -43,59 +43,59 @@
   box-shadow: 0 1px 0 rgba(255,255,255,.6) inset;
 }
 
-.button:hover {
+.carousel-button:hover {
   background: #e7e9ec;
 }
 
-.productContainer {
+.carousel-productContainer {
   white-space: nowrap;
   width: 100%;
   display: flex;
   justify-content: space-around;
 }
 
-.productBlock {
+.carousel-productBlock {
   display: inline-block;
   white-space: normal;
   margin: 0px 15px 0px 15px;
 }
 
-.rating:hover {
+.caousel-rating:hover {
   cursor: pointer; 
 }
 
-.image {
+.carousel-image {
   width: 160px;
   height: 160px;
   background-position: center center;
   background-repeat: no-repeat;
 }
 
-.image:hover {
+.carousel-image:hover {
   cursor: pointer;
 }
 
-.textBox {
+.carousel-textBox {
   width: 160px;
   font-family: "Amazon Ember", Arial, sans-serif;
   font-size: 13px;
   font-style: normal;
 }
 
-.nameText {
+.carousel-nameText {
   color: #0066c0; 
 }
 
-.nameText:hover {
+.carousel-nameText:hover {
   color: #c45500;
   text-decoration: underline;
   cursor: pointer; 
 }
 
-.priceText {
+.carousel-priceText {
   color: #B12704;
 }
 
-.priceText:hover {
+.carousel-priceText:hover {
    cursor: pointer;  
 }

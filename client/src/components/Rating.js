@@ -15,16 +15,16 @@ export default function Rating({ product, goToRating }) {
     }
 
     rating.push(
-      <img 
+      <img
         key={i}
         src={image}
-        alt='Leaf' 
-        id={product.productId} 
-        className='rating' 
-        onClick={goToRating} 
-        height='27px' 
-        width='27px' 
-      />
+        alt="Leaf"
+        id={product.productId}
+        className="carousel-rating"
+        onClick={goToRating}
+        height="27px"
+        width="27px"
+      />,
     );
   }
 

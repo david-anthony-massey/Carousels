@@ -3,20 +3,20 @@ import Rating from './Rating.js';
 
 export default function Product(props) {
   return (
-    <div className="productContainer">
+    <div className="carousel-productContainer">
       {Array.from(props.productsFive).map((product, index) => {
         return (
-          <div key={index} className="productBlock">
-            <img 
-              className="image" 
+          <div key={index} className="carousel-productBlock">
+            <img
+              className="carousel-image"
               src={product.imgUrl}
               id={product.productId}
               onClick={props.goToProduct}
             />
-            <div className="textBox">
-              <div className="nameText" id={product.productId} onClick={props.goToProduct}>{product.productName}</div>
+            <div className="carousel-textBox">
+              <div className="carousel-nameText" id={product.productId} onClick={props.goToProduct}>{product.productName}</div>
               <Rating product={product} goToRating={props.goToRating} />
-              <div className="priceText" id={product.productId} onClick={props.goToProduct}>${(product.price).toFixed(2)}</div>
+              <div className="carousel-priceText" id={product.productId} onClick={props.goToProduct}>${(product.price).toFixed(2)}</div>
             </div>
           </div>
         );
