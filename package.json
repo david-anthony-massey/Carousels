@@ -4,14 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
     "dev": "webpack -w --mode development",
-<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js"
-=======
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> 6e78f9bf777f536ab611fe34aed72a1a525157ea
   },
   "author": "",
   "license": "ISC",

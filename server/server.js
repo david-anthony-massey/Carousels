@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('client/dist'));
 
-app.get('/carousel/getProducts/:productId', (req, res) => {
+app.get('/getProducts/:productId', (req, res) => {
   const productId = req.params.productId;
   db.getProducts(productId, (err, results) => {
     if (err) {
