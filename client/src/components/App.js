@@ -9,7 +9,7 @@ export default class App extends Component {
       productId: "",
       categoryId: 0, // If category id = 0; return all categories
       counter: 0,
-      productsAll: "",
+      productsAll: [],
       productsFive: "",
       productsNumber: ""
     };
