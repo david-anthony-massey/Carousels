@@ -1,48 +1,29 @@
 import React from "react";
-import StarRatingComponent from "react-star-rating-component";
+import Rating from "./Rating.js";
 
 export default function Product(props) {
   return (
-    <div className="productContainer">
+    <div className="carousel-productContainer">
       {Array.from(props.productsFive).map((product, index) => {
         return (
-          <div key={index} className="productBlock">
+          <div key={index} className="carousel-productBlock">
             <img
-              className="image"
-              src={product.imgURL}
-              id={product.id}
-              data-cat={product.category_id}
-              onClick={props.goToProduct}
-            ></img>
-            <div className="textBox">
+              className="carousel-image"
+              src={product.imgUrl}
+              id={product.productId}
+              // onClick={props.goToProduct}
+            />
+            <div className="carousel-textBox">
               <div
-                className="nameText"
-                id={product.id}
-                onClick={props.goToProduct}
+                className="carousel-nameText"
+                id={product.productId} /*onClick={props.goToProduct}*/
               >
-                {product.name}
+                {product.productName}
               </div>
-              <div>
-                <StarRatingComponent
-                  name={product.id.toString()}
-                  editing={false}
-                  renderStarIcon={() => (
-                    <span
-                      id={product.id}
-                      data-cat={product.category_id}
-                      onClick={props.goToRating}
-                      className="rating"
-                    >
-                      🍁
-                    </span>
-                  )}
-                  starCount={Math.round(product.rating)}
-                />
-              </div>
+              <Rating product={product} /*goToRating={props.goToRating}*/ />
               <div
-                className="priceText"
-                id={product.id}
-                onClick={props.goToProduct}
+                className="carousel-priceText"
+                id={product.productId} /*onClick={props.goToProduct}*/
               >
                 ${product.price.toFixed(2)}
               </div>
