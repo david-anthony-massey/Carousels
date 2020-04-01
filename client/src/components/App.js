@@ -106,7 +106,9 @@ export default class App extends Component {
   // Gets all products in db that match categoryId (0 being all) and assigns them to productsAll
   getProducts() {
     axios
-      .get(`/getProducts/${this.state.categoryId}`)
+      .get(
+        `https://saskatchewanazon-carousel.herokuapp.com/getProducts/${this.state.categoryId}`
+      )
       .then(response => {
         console.log(response.data);
         this.setState({ productsAll: response.data });
