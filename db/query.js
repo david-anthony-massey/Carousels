@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 const getProducts = (productId, callback) => {
-  if (categoryId == "0") {
+  if (productId == "0") {
     connection.query(`SELECT * FROM Products;`, (err, data) => {
       if (err) {
         callback(err, null);
@@ -19,13 +19,16 @@ const getProducts = (productId, callback) => {
       }
     });
   } else {
-    connection.query(`SELECT * FROM Products WHERE category_id = (SELECT category_id FROM Products WHERE id = ('${productId}'));`, (err, data) => {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, data);
+    connection.query(
+      `SELECT * FROM Products WHERE category_id = (SELECT category_id FROM Products WHERE id = ('${productId}'));`,
+      (err, data) => {
+        if (err) {
+          callback(err, null);
+        } else {
+          callback(null, data);
+        }
       }
-    });
+    );
   }
 };
 
