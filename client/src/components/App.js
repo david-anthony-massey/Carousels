@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Carousel from './Carousel';
-
+import React, { Component } from "react";
+import axios from "axios";
+import Carousel from "./Carousel";
 
 export default class App extends Component {
   constructor() {
@@ -9,27 +8,31 @@ export default class App extends Component {
     this.state = {
       productId: 0, // If category id = 0; return all products
       counter: 0,
-      productsAll: '',
-      productsFive: '',
-      productsNumber: '',
+      productsAll: "",
+      productsFive: "",
+      productsNumber: ""
     };
     this.getProducts = this.getProducts.bind(this);
     this.getFive = this.getFive.bind(this);
     this.nextFive = this.nextFive.bind(this);
     this.lastFive = this.lastFive.bind(this);
-    // this.goToProduct = this.goToProduct.bind(this);
-    // this.goToRating = this.goToRating.bind(this);
+    this.goToProduct = this.goToProduct.bind(this);
+    this.goToRating = this.goToRating.bind(this);
     this.resetProducts = this.resetProducts.bind(this);
 
     // const event = new Event('click');
-    window.addEventListener('click', (event) => {
-      if (event.target.id) {
-        this.setState({ productId: event.target.id }, () => {
-          console.log(`state.productId = ${this.state.productId}`);
-          this.getProducts();
-        });
-      }
-    }, false);
+    window.addEventListener(
+      "click",
+      event => {
+        if (event.target.id) {
+          this.setState({ productId: event.target.id }, () => {
+            console.log(`state.productId = ${this.state.productId}`);
+            this.getProducts();
+          });
+        }
+      },
+      false
+    );
     // window.dispatchEvent(event);
   }
 
@@ -65,22 +68,22 @@ export default class App extends Component {
       });
   }
 
-  // goToProduct() {
-  //   this.setState({ productId: event.target.id }, () => {
-  //     console.log('Insert go to Product Page function here');
-  //     console.log(`state.productId = ${this.state.productId}`);
-  //     this.getProducts();
-  //   });
-  // }
+  goToProduct() {
+    this.setState({ productId: event.target.id }, () => {
+      console.log("Insert go to Product Page function here");
+      console.log(`state.productId = ${this.state.productId}`);
+      this.getProducts();
+    });
+  }
 
-  // goToRating() {
-  //   this.setState({ productId: event.target.id }, () => {
-  //     console.log('Insert go to Ratings Page function here');
-  //     console.log(`state.productId = ${this.state.productId}`);
-  //     this.state.counter = 0;
-  //     this.getProducts();
-  //   });
-  // }
+  goToRating() {
+    this.setState({ productId: event.target.id }, () => {
+      console.log("Insert go to Ratings Page function here");
+      console.log(`state.productId = ${this.state.productId}`);
+      this.state.counter = 0;
+      this.getProducts();
+    });
+  }
 
   // Increments state.counter and loads next 5 items when right button clicked
   nextFive() {
@@ -126,8 +129,8 @@ export default class App extends Component {
           lastFive={this.lastFive}
           counter={this.state.counter}
           productsNumber={this.state.productsNumber}
-          // goToProduct={this.goToProduct}
-          // goToRating={this.goToRating}
+          goToProduct={this.goToProduct}
+          goToRating={this.goToRating}
         />
         <button onClick={this.resetProducts} type="button">
           See All Products
