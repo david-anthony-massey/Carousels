@@ -24,7 +24,7 @@ export default function Product(props) {
               </div>
               <div>
                 <StarRatingComponent
-                  name={product.productId.toString()}
+                  name={product.product.id.toString()}
                   editing={false}
                   renderStarIcon={() => (
                     <span
