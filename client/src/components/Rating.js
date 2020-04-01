@@ -15,7 +15,7 @@ export default function Rating({ product, goToRating }) {
         "https://saskatchewanazon-carousel.herokuapp.com/styles/images/half_leaf.png";
     } else {
       image =
-        "https://saskatchewanazon-carousel.herokuapp.com/styles/images/empty_leaf.png";
+        "https://saskatchewanazon-carousel.herokuapp.com/images/empty_leaf.png";
 }
 
     rating.push(
