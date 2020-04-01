@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import axios from "axios";
-import Carousel from "./Carousel";
+import React, { Component } from 'react';
+import axios from 'axios';
+import Carousel from './Carousel';
+
 
 export default class App extends Component {
   constructor() {
@@ -8,9 +9,9 @@ export default class App extends Component {
     this.state = {
       productId: 0, // If category id = 0; return all products
       counter: 0,
-      productsAll: "",
-      productsFive: "",
-      productsNumber: ""
+      productsAll: '',
+      productsFive: '',
+      productsNumber: '',
     };
     this.getProducts = this.getProducts.bind(this);
     this.getFive = this.getFive.bind(this);
@@ -21,18 +22,14 @@ export default class App extends Component {
     this.resetProducts = this.resetProducts.bind(this);
 
     // const event = new Event('click');
-    window.addEventListener(
-      "click",
-      event => {
-        if (event.target.id) {
-          this.setState({ productId: event.target.id }, () => {
-            console.log(`state.productId = ${this.state.productId}`);
-            this.getProducts();
-          });
-        }
-      },
-      false
-    );
+    window.addEventListener('click', (event) => {
+      if (event.target.id) {
+        this.setState({ productId: event.target.id }, () => {
+          console.log(`state.productId = ${this.state.productId}`);
+          this.getProducts();
+        });
+      }
+    }, false);
     // window.dispatchEvent(event);
   }
 
