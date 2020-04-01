@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import Carousel from "./Carousel";
 import axios from "axios";
+import Carousel from "./Carousel";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      productId: "",
-      categoryId: 0, // If category id = 0; return all categories
+      productId: 0, // If category id = 0; return all products
       counter: 0,
-      productsAll: [],
+      productsAll: "",
       productsFive: "",
       productsNumber: ""
     };
@@ -17,62 +16,74 @@ export default class App extends Component {
     this.getFive = this.getFive.bind(this);
     this.nextFive = this.nextFive.bind(this);
     this.lastFive = this.lastFive.bind(this);
-    this.goToProduct = this.goToProduct.bind(this);
-    this.goToRating = this.goToRating.bind(this);
+    // this.goToProduct = this.goToProduct.bind(this);
+    // this.goToRating = this.goToRating.bind(this);
     this.resetProducts = this.resetProducts.bind(this);
+
+    // const event = new Event('click');
+    window.addEventListener(
+      "click",
+      event => {
+        if (event.target.id) {
+          this.setState({ productId: event.target.id }, () => {
+            console.log(`state.productId = ${this.state.productId}`);
+            this.getProducts();
+          });
+        }
+      },
+      false
+    );
+    // window.dispatchEvent(event);
   }
 
   componentDidMount() {
     this.getProducts();
   }
 
-  goToProduct() {
-    this.setState(
-      {
-        productId: event.target.id,
-        categoryId: document
-          .getElementById(event.target.id)
-          .getAttribute("data-cat")
-      },
-      () => {
-        console.log("Insert go to Product Page function here");
-        console.log(
-          `state.productId = ${this.state.productId}, state.categoryId = ${this.state.categoryId}`
-        );
-        this.state.counter = 0;
-        this.getProducts();
-      }
-    );
-  }
-
-  goToRating() {
-    this.setState(
-      {
-        productId: event.target.id,
-        categoryId: document
-          .getElementById(event.target.id)
-          .getAttribute("data-cat")
-      },
-      () => {
-        console.log("Insert go to Ratings Page function here");
-        console.log(
-          `state.productId = ${this.state.productId}, state.categoryId = ${this.state.categoryId}`
-        );
-        this.state.counter = 0;
-        this.getProducts();
-      }
-    );
-  }
-
   // Retrieves 5 products from productsAll (results of getProducts db query) and assigns them to productsFive
   getFive() {
-    let getFive = this.state.productsAll.slice(
+    const getFive = this.state.productsAll.slice(
       this.state.counter,
       this.state.counter + 5
     );
     this.setState({ productsFive: getFive });
     console.log("getFive =", this.state.productsFive);
   }
+
+  // Gets all products in db that match categoryId (0 being all) and assigns them to productsAll
+  getProducts() {
+    axios
+      .get(
+        `https://saskatchewanazon-carousel.herokuapp.com/getProducts/${this.state.productId}`
+      )
+      .then(response => {
+        this.setState({ productsAll: response.data });
+      })
+      .then(() => {
+        this.state.productsNumber = this.state.productsAll.length;
+        this.getFive();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  // goToProduct() {
+  //   this.setState({ productId: event.target.id }, () => {
+  //     console.log('Insert go to Product Page function here');
+  //     console.log(`state.productId = ${this.state.productId}`);
+  //     this.getProducts();
+  //   });
+  // }
+
+  // goToRating() {
+  //   this.setState({ productId: event.target.id }, () => {
+  //     console.log('Insert go to Ratings Page function here');
+  //     console.log(`state.productId = ${this.state.productId}`);
+  //     this.state.counter = 0;
+  //     this.getProducts();
+  //   });
+  // }
 
   // Increments state.counter and loads next 5 items when right button clicked
   nextFive() {
@@ -103,29 +114,8 @@ export default class App extends Component {
     });
   }
 
-  // Gets all products in db that match categoryId (0 being all) and assigns them to productsAll
-  getProducts() {
-    axios
-      .get(
-        `https://saskatchewanazon-carousel.herokuapp.com/getProducts/${this.state.categoryId}`
-      )
-      .then(response => {
-        console.log(response.data);
-        this.setState({ productsAll: response.data });
-      })
-      .then(() => {
-        this.state.productsNumber = this.state.productsAll.length;
-        this.getFive();
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  }
-
   resetProducts() {
-    console.log("Hello");
-    this.setState({ categoryId: 0, counter: 0 }, () => {
-      console.log(this.state.category);
+    this.setState({ productId: 0, counter: 0 }, () => {
       this.getProducts();
     });
   }
@@ -139,10 +129,12 @@ export default class App extends Component {
           lastFive={this.lastFive}
           counter={this.state.counter}
           productsNumber={this.state.productsNumber}
-          goToProduct={this.goToProduct}
-          goToRating={this.goToRating}
+          // goToProduct={this.goToProduct}
+          // goToRating={this.goToRating}
         />
-        <button onClick={this.resetProducts}>See All Products</button>
+        <button onClick={this.resetProducts} type="button">
+          See All Products
+        </button>
       </div>
     );
   }
