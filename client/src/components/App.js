@@ -26,7 +26,7 @@ export default class App extends Component {
       event => {
         if (
           event.target.getAttribute("data-id") &&
-          event.target.getAttribute("data-id") !== this.state.currentItem.id &&
+          event.target.getAttribute("data-id") !== this.state.productId &&
           !isNaN(event.target.getAttribute("data-id"))
         ) {
           this.setState(
