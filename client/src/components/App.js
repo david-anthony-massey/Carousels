@@ -24,11 +24,18 @@ export default class App extends Component {
     window.addEventListener(
       "click",
       event => {
-        if (event.target.id) {
-          this.setState({ productId: event.target.id }, () => {
-            console.log(`state.productId = ${this.state.productId}`);
-            this.getProducts();
-          });
+        if (
+          event.target.getAttribute("data-id") &&
+          event.target.getAttribute("data-id") !== this.state.currentItem.id &&
+          !isNaN(event.target.getAttribute("data-id"))
+        ) {
+          this.setState(
+            { productId: event.target.getAttribute("data-id") },
+            () => {
+              console.log(`state.productId = ${this.state.productId}`);
+              this.getProducts();
+            }
+          );
         }
       },
       false
