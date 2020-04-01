@@ -13,11 +13,7 @@
 }
 
 .carousel-customerText {
-<<<<<<< HEAD:client/dist/styles/main.css
   color: #c60;
-=======
-  color: #C60;
->>>>>>> 6e78f9bf777f536ab611fe34aed72a1a525157ea:client/dist/styles/carouselStyle.css
   font-size: 16px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-weight: bold;
@@ -65,11 +61,7 @@
 }
 
 .caousel-rating:hover {
-<<<<<<< HEAD:client/dist/styles/main.css
   cursor: pointer;
-=======
-  cursor: pointer; 
->>>>>>> 6e78f9bf777f536ab611fe34aed72a1a525157ea:client/dist/styles/carouselStyle.css
 }
 
 .carousel-image {
@@ -91,11 +83,7 @@
 }
 
 .carousel-nameText {
-<<<<<<< HEAD:client/dist/styles/main.css
   color: #0066c0;
-=======
-  color: #0066c0; 
->>>>>>> 6e78f9bf777f536ab611fe34aed72a1a525157ea:client/dist/styles/carouselStyle.css
 }
 
 .carousel-nameText:hover {
@@ -105,17 +93,9 @@
 }
 
 .carousel-priceText {
-<<<<<<< HEAD:client/dist/styles/main.css
   color: #b12704;
 }
 
 .carousel-priceText:hover {
   cursor: pointer;
-=======
-  color: #B12704;
-}
-
-.carousel-priceText:hover {
-   cursor: pointer;  
->>>>>>> 6e78f9bf777f536ab611fe34aed72a1a525157ea:client/dist/styles/carouselStyle.css
 }
