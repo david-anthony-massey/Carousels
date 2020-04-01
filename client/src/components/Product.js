@@ -9,7 +9,7 @@ export default function Product(props) {
           <div key={index} className="productBlock">
             <img
               className="image"
-              src={product.imgUrl}
+              src={product.imgURL}
               id={product.id}
               data-cat={product.category_id}
               onClick={props.goToProduct}
