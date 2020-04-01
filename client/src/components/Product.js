@@ -10,20 +10,22 @@ export default function Product(props) {
             <img
               className="carousel-image"
               src={product.imgURL}
-              id={product.productId}
-              // onClick={props.goToProduct}
+              id={product.id}
+              onClick={props.goToProduct}
             />
             <div className="carousel-textBox">
               <div
                 className="carousel-nameText"
-                id={product.productId} /*onClick={props.goToProduct}*/
+                id={product.id}
+                onClick={props.goToProduct}
               >
-                {product.productName}
+                {product.name}
               </div>
               <Rating product={product} /*goToRating={props.goToRating}*/ />
               <div
                 className="carousel-priceText"
-                id={product.productId} /*onClick={props.goToProduct}*/
+                id={product.id}
+                onClick={props.goToProduct}
               >
                 ${product.price.toFixed(2)}
               </div>
